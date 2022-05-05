@@ -38,9 +38,9 @@ object CharacterHelper {
     private fun setInitialValue() = playerRef.set(
         mapOf(
             "id" to uuid,
-            "name" to "vikingman-${(1..300).random()}",
-            "x" to (0..16).random(),
-            "y" to (0..16).random(),
+            "name" to "s10an",
+            "x" to 5,
+            "y" to 5,
             "coins" to 0,
             "color" to listOf("blue", "red", "green").random(),
             "direction" to "left",

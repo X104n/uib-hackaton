@@ -43,27 +43,32 @@ class MainActivity : ComponentActivity() {
         Firebase.firestore.firestoreSettings = settings
         FirebaseAuth.getInstance().signInAnonymously().addOnSuccessListener {
             CharacterHelper.setInitialValues()
-            //CharacterHelper.updateName("some name")
+            CharacterHelper.updateName("s10an")
 
-            lifecycleScope.launch {
-                // sample of how to move character, moves the character in a circle three times
-                repeat(3){
-                    CharacterHelper.moveRight()
-                    delay(1500)
-                    CharacterHelper.moveDown()
-                    delay(1500)
-                    CharacterHelper.moveLeft()
-                    delay(1500)
-                    CharacterHelper.moveUp()
-                    delay(1500)
-                }
-
-            }
             // do logic with loggedIn user
         }.addOnFailureListener {
             Toast.makeText(this, "User not signed in", Toast.LENGTH_SHORT).show()
         }
-
+        setContent {
+            Column() {
+                Row() {
+                    Button(onClick = {CharacterHelper.moveUp()}) {
+                        Text(text = "Up")
+                    }
+                    Button(onClick = {CharacterHelper.moveDown()}) {
+                        Text(text = "Down")
+                    }
+                }
+                Row() {
+                    Button(onClick = {CharacterHelper.moveLeft()}) {
+                        Text(text = "Left")
+                    }
+                    Button(onClick = {CharacterHelper.moveRight()}) {
+                        Text(text = "Right")
+                    }
+                }
+            }
+        }
     }
 
 
@@ -73,6 +78,6 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun DefaultPreview() {
     UiBHackatonTheme {
-        Text("hello UiB")
+        Text("Hello UiB")
     }
 }
